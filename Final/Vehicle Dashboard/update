@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Style for the table and sections */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .top-section {
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .bottom-section {
+            background-color: #e0e0e0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="top-section" colspan="2">
+                Dealer
+            </td>
+        </tr>
+        <tr>
+            <td class="top-section">
+                Top Section 2
+            </td>
+            <td class="top-section">
+                Top Section 3
+            </td>
+        </tr>
+        <tr>
+            <td class="bottom-section">
+                Bottom Section 1
+            </td>
+            <td class="bottom-section">
+                Bottom Section 2
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

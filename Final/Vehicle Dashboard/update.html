@@ -1,0 +1,796 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Used Vehicle</title>
+    <meta name="description" content="CVIRMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="shortcut icon" href="images/cvirms_logo.png">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" type="text/css" media="print" href="print.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+
+             /* Style the dropdown menu */
+             .user-menu {
+    display: none; /* Hide the menu by default */
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+ /* Header styles */
+ .h1 {
+            text-align: center;
+            background-color:white;
+            color:black;
+            padding: 10px;
+            margin-top: 0;
+        }
+
+        /* Table cell padding and font size */
+        table td {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        /* Add some space between tables */
+        .table {
+            margin-bottom: 20px;
+            border-color: black;
+        }
+        /* Make keys (labels) bolder */
+        table td:first-child {
+            font-weight: bold;
+        }
+
+        /* Center text within table cells */
+        table td {
+            text-align: center;
+        }
+
+        /* Styling for fieldset-like sections with different colors */
+        .section {
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .section-dealer {
+            background-color: white; /* Yellow */
+        }
+
+        .section-vehicle {
+            background-color: white; /* Deep Sky Blue */
+        }
+
+        .section-seller {
+            background-color:  white;  /* Lime Green */
+        }
+
+        .section-buyer {
+            background-color: white;  /* Orange */
+        }
+
+        /* Add animation to sections */
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Style the headers */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style Bootstrap buttons */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        /* Style primary button */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        /* Style secondary button */
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color:black;
+            color: #fff;
+        }
+    /* Style the menu items */
+    .user-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+    /* Change the background color and text color on hover */
+    .user-menu a:hover {
+    background-color: #b4d0de;
+    color: #fff;
+}
+
+    /* Show the dropdown menu when the parent element is hovered */
+    .dropdown:hover .user-menu {
+    display: block;
+}
+
+form {
+            max-width: 80%;
+           margin-top: 20%;
+            margin: 0 auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            background-color: #F9F9F9;
+            border-radius: 5px;
+            margin-left: 100px;
+        }
+
+    /* Style form fields to have the same length */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Label styles */
+    label {
+        font-weight: bold;
+        display: inline-block;
+        width: 150px; /* Adjust the width as needed for alignment */
+    }
+
+    /* Input and select styles */
+    input[type="text"],
+    input[type="tel"],
+    input[type="dropdown"],
+    input[type="file"],
+    select,
+    input[type="file"] {
+        width: 80%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        color: #333;
+    }
+
+    /* Add more specific styling for specific elements if needed */
+    .l1, .z1 {
+        font-weight: bold;
+    }
+
+    /* Add padding and margin to buttons */
+    button[type="submit"] {
+        padding: 10px 20px;
+        margin-top: 10px;
+    }
+    .card:hover {
+        transform: scale(1.00); /* Enlarge the card slightly on hover */
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    }
+.form-group4
+{
+    width:60%;
+}
+        #main-menu a {
+        color: black !important;
+    }
+    
+        #language {
+    margin-top: 0; /* Remove top margin */
+    padding: 10px 0px; /* Adjust padding as needed */
+    }
+        #emergency{
+            background-color: #e0c8f7;
+        }
+        #notice{
+            background-color: #f7c8c6;
+        }
+        #Add{
+            background-color: #c1e2b3;
+
+        }
+        #support{
+            background-color: #e6f7ff;
+        }
+        .card{
+            border-radius: 20px;
+        }
+
+        .logo {
+    display: inline-flex;
+    align-items: center;
+    color: white; /* Set text color to white */
+   
+    padding: 5px 10px; /* Add padding for spacing */
+    border-radius: 5px; /* Add rounded corners */
+}
+
+.logo i {
+    margin-right: 5px; /* Add spacing between the icon and text */
+}
+.form-group
+{
+    width: 100%;
+}
+
+
+/* Dropdown Menu Background */
+.dropdown-menu {
+    background-color: #f7f7f7;
+    border: 1px solid #dcdcdc; /* Dropdown Menu Border */
+    border-radius: 5px; /* Rounded corners for the dropdown menu */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+/* Dropdown Menu Items Text Color */
+.dropdown-item {
+    color: #333333;
+}
+
+/* Hover Color (Background) */
+.dropdown-item:hover {
+    background-color: #b4d0de;
+    color: #555555; /* Text color for hovered item */
+}
+
+/* Highlight Color (Active Item) */
+.dropdown-item.active {
+    background-color: #e0e0e0;
+}
+
+/* Remove underlines from links inside dropdown items */
+.dropdown-item a {
+    text-decoration: none;
+}
+
+/* Optional: Increase spacing between items for better readability */
+.dropdown-menu .dropdown-item {
+    padding: 10px 15px;
+}
+
+/* Optional: Style the dropdown toggle button */
+.navbar-toggler-icon {
+    color: #333333;
+}
+.green-button {
+    background-color: green !important;
+}
+.container{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.hide-on-print {
+        display: none;
+    }
+
+    /* Define a class to show elements when printing */
+    .show-on-print {
+        display: block;
+    }
+
+    /* Additional styles to format the printed page */
+   
+    </style>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script>
+
+        function update(id){
+            console.log(id);
+            console.log("user is updated");
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel" style="background-color: #bab6b6;">
+        <nav class="navbar navbar-expand-sm navbar-default" style="background-color: #bab6b6;">
+            <div class="navbar-header" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #bab6b6;">
+                    <i class="fa fa-bars" ></i>
+                </button>
+                <a class="navbar-brand" href="index.html" style="background-color: #bab6b6;">
+                    <img src="images/cvirms_logo.png" alt="Logo" width="130px">
+                </a>   
+                
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav" style="background-color:#bab6b6;">
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="menu-icon fa fa-home"  aria-hidden="true" aria-hidden="true" style="color: black;"></i><!-- User icon -->
+                             Home
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="employee.html">
+                            <i class="menu-icon fa fa-user-plus"  aria-hidden="true" aria-hidden="true" style="color: black;"></i><!-- User icon -->
+                             Add Employee
+                        </a>
+                    </li>
+
+        
+          
+                   
+                    
+                    <li class="nav-item dropdown active"> <!-- Use the 'nav-item dropdown' class -->
+                        <a class="nav-link dropdown-toggle ml-auto" href="#" id="language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">
+                            <i class="menu-icon fa fa-language black-menu-icon" aria-hidden="true" aria-hidden="true" style="color: black;"></i> Language
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <a class="dropdown-item" href="#" >Hindi</a>
+                            <a class="dropdown-item" href="#" >English</a>
+                            <a class="dropdown-item" href="#" >Marathi</a>
+                            <a class="dropdown-item" href="#" >Kannada</a>
+                            <a class="dropdown-item" href="#" >Telugu</a>
+                            <a class="dropdown-item" href="#" >Malayalam</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </aside><!-- /#left-panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header" style="background-color:#bab6b6;">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger" style="margin-right: 70px; " ><input type="submit" value="Search" style="width: 100px;"></i></button>
+                        <div class="form-inline" style="background-color: #bab6b6  ;">
+                            <form class="search-form"  style="background-color: #bab6b6;">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search" style="background-color: #bab6b6;color: black;">
+                                <button  class ="search-close" type="submit"><i style="color: black"; class  ="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="dropdown">
+                            <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                                <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+                                <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                                <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div id="language-select">
+                        <a id="profile" aria-haspopup="true" aria-expanded="true">
+                            <p style="color: black;">Profile</p>
+                        </a>
+                    </div>
+
+                 </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+        
+
+        
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section section-dealer animated">
+                    <h1 class="h1">Dealer Details</h1>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Name Of Dealer:</td>
+                            <td>John Doe</td>
+                        </tr>
+                        <tr>
+                            <td>Contact No Of Dealer:</td>
+                            <td>123-456-7890</td>
+                        </tr>
+                        <tr>
+                            <td>Alternate No Of Dealer:</td>
+                            <td>987-654-3210</td>
+                        </tr>
+                        <tr>
+                            <td>Address Of Dealer:</td>
+                            <td>123 Main Street</td>
+                        </tr>
+                        <tr>
+                            <td>Pincode:</td>
+                            <td>12345</td>
+                        </tr>
+                        <tr>
+                            <td>Area:</td>
+                            <td>Example Area</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>Sample City</td>
+                        </tr>
+                        <tr>
+                            <td>Taluka:</td>
+                            <td>Sample Taluka</td>
+                        </tr>
+                        <tr>
+                            <td>District:</td>
+                            <td>Sample District</td>
+                        </tr>
+                        <tr>
+                            <td>State:</td>
+                            <td>Sample State</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="section section-vehicle animated">
+                    <h1 class="h1">Vehicle Details</h1>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Type Of Vehicle:</td>
+                            <td>Car</td>
+                        </tr>
+                        <tr>
+                            <td>Make:</td>
+                            <td>Suzuki</td>
+                        </tr>
+                        <tr>
+                            <td>Model:</td>
+                            <td>Swift</td>
+                        </tr>
+                        <tr>
+                            <td>Color:</td>
+                            <td>Red</td>
+                        </tr>
+                        <tr>
+                            <td>Chassis Number:</td>
+                            <td>454DGHGCHGCH</td>
+                        </tr>
+                        <tr>
+                            <td>Vehicle Photo:</td>
+                            <td>yiyi.png</td>
+                        </tr>
+                        <tr>
+                            <td>Registration No:</td>
+                            <td>4534DDGDGH</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Police Station:</td>
+                            <td>abc</td>
+                        </tr>
+                        <tr>
+                            <td>SDPO Division:</td>
+                            <td>Pune</td>
+                        </tr>
+                        <tr>
+                            <td>Ad SP/DCP:</td>
+                            <td>sp/ty</td>
+                        </tr>
+                        <tr>
+                            <td>SP/CP:</td>
+                            <td>sp/cp</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10%;">
+            <div class="col-md-6">
+                <div class="section section-seller animated">
+                    <h1 class="h1">Seller Details</h1>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Name Of Seller:</td>
+                            <td>Mary Smith</td>
+                        </tr>
+                        <tr>
+                            <td>Contact No Of Seller:</td>
+                            <td>987-654-3210</td>
+                        </tr>
+                        <tr>
+                            <td>Alternate No Of Seller:</td>
+                            <td>123-456-7890</td>
+                        </tr>
+                        <tr>
+                            <td>Address Of Seller:</td>
+                            <td>456 Elm Street</td>
+                        </tr>
+                        <tr>
+                            <td>Pincode:</td>
+                            <td>54321</td>
+                        </tr>
+                        <tr>
+                            <td>Area:</td>
+                            <td>Another Area</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>Other City</td>
+                        </tr>
+                        <tr>
+                            <td>Taluka:</td>
+                            <td>Other Taluka</td>
+                        </tr>
+                        <tr>
+                            <td>District:</td>
+                            <td>Other District</td>
+                        </tr>
+                        <tr>
+                            <td>State:</td>
+                            <td>Other State</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="section section-buyer animated">
+                    <h1 class="h1">Buyer Details</h1>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Name Of Buyer:</td>
+                            <td>David Johnson</td>
+                        </tr>
+                        <tr>
+                            <td>Contact No Of Buyer:</td>
+                            <td>555-555-5555</td>
+                        </tr>
+                        <tr>
+                            <td>Alternate No:</td>
+                            <td>444-444-4444</td>
+                        </tr>
+                        <tr>
+                            <td>Address Of Buyer:</td>
+                            <td>789 Oak Avenue</td>
+                        </tr>
+                        <tr>
+                            <td>Pincode:</td>
+                            <td>67890</td>
+                        </tr>
+                        <tr>
+                            <td>Area:</td>
+                            <td>Yet Another Area</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>Yet Another City</td>
+                        </tr>
+                        <tr>
+                            <td>Taluka:</td>
+                            <td>Yet Another Taluka</td>
+                        </tr>
+                        <tr>
+                            <td>District:</td>
+                            <td>Yet Another District</td>
+                        </tr>
+                        <tr>
+                            <td>State:</td>
+                            <td>Yet Another State</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <button id="printButton" class="btn btn-primary">Print</button>
+
+    </div>
+
+            
+
+    <!-- Right Panel -->
+    
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/widgets.js"></script>
+    <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+     <script>
+        const brokerCheckbox = document.getElementById("brokerCheckbox");
+        const brokerFieldset = document.getElementById("brokerFieldset");
+
+        brokerCheckbox.addEventListener("change", function() {
+            if (brokerCheckbox.checked) {
+                brokerFieldset.classList.remove("d-none"); // Show broker fields
+            } else {
+                brokerFieldset.classList.add("d-none");    // Hide broker fields
+            }
+        });
+    </script>
+    <script>
+        // Get the profile dropdown link and dropdown menu
+        const profileDropdownLink = document.getElementById("profileDropdownLink");
+        const userMenuDropdown = document.querySelector(".user-menu");
+    
+        // Toggle the user menu when the profile link is clicked
+        profileDropdownLink.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent the default link behavior
+            userMenuDropdown.classList.toggle("show");
+        });
+    
+        // Close the user menu when clicking outside of it
+        document.addEventListener("click", function (e) {
+            if (!profileDropdownLink.contains(e.target) && !userMenuDropdown.contains(e.target)) {
+                userMenuDropdown.classList.remove("show");
+            }
+        });
+    </script>
+     <script>
+        function toggleBrokerFields() {
+            const brokerCheckbox = document.getElementById("brokerCheckbox");
+            const brokerFieldset = document.getElementById("brokerFieldset");
+
+            if (brokerCheckbox.checked) {
+                brokerFieldset.style.display = "block";
+            } else {
+                brokerFieldset.style.display = "none";
+            }
+        }
+
+        function change() {
+            const vehicleTypeDropdown = document.getElementById("vehicleType");
+            const makeDropdown = document.getElementById("makeDropdown");
+
+            makeDropdown.innerHTML = ""; // Clear existing options
+
+            const selectedVehicleType = vehicleTypeDropdown.value;
+
+            if (selectedVehicleType === "Two wheeler") {
+                // Add options for two-wheeler
+                const options = ["Hero MotoCorp", "Bajaj", "TVS", "Honda", "Suzuki", "Yamaha", "Royal Enfield", "KTM", "Mahindra", "Piaggio", "Vespa", "Aprilia", "Jawa", "Benelli", "Harley-Davidson", "Ducati", "Triumph", "Kawasaki"];
+                options.forEach(optionValue => {
+                    const option = document.createElement("option");
+                    option.value = optionValue;
+                    option.textContent = optionValue;
+                    makeDropdown.appendChild(option);
+                });
+            } else if (selectedVehicleType === "Car") {
+                // Add options for car
+                const options = ["Maruti Suzuki", "Hyundai", "Tata Motors", "Mahindra", "Kia", "Honda", "Toyota", "Ford", "Volkswagen", "Renault", "Nissan", "Skoda", "MG Motors", "Jeep", "BMW", "Mercedes-Benz", "Audi", "Volvo", "Jaguar", "Land Rover"];
+                options.forEach(optionValue => {
+                    const option = document.createElement("option");
+                    option.value = optionValue;
+                    option.textContent = optionValue;
+                    makeDropdown.appendChild(option);
+                });
+            } else if (selectedVehicleType === "Commercial Vehicle") {
+                // Add options for Commercial Vehicle
+                const options = ["Tata Motors", "Ashok Leyland", "Mahindra", "Eicher", "Force Motors", "Piaggio", "Swaraj Mazda", "BharatBenz", "Volvo Trucks", "Scania", "Daimler", "Isuzu", "MAN Trucks", "Hino", "Foton", "Kamaz", "AMW", "Navistar International"];
+                options.forEach(optionValue => {
+                    const option = document.createElement("option");
+                    option.value = optionValue;
+                    option.textContent = optionValue;
+                    makeDropdown.appendChild(option);
+                });
+            } else {
+                // Default placeholder option
+                const option = document.createElement("option");
+                option.value = "";
+                option.textContent = "Please select a vehicle type first";
+                makeDropdown.appendChild(option);
+            }
+        }
+
+        // Initial call to populate options based on the default selected value
+           change();
+              </script>
+              <script>
+                // Function to handle the "Print" button click event
+                function printPage() {
+                    window.print(); // Trigger the browser's print functionality
+                }
+            
+                // Attach the click event listener to the "Print" button
+                document.getElementById("printButton").addEventListener("click", printPage);
+            </script>
+            <script>
+                // Function to handle the "Print" button click event
+                function printPage() {
+                    window.print(); // Trigger the browser's print functionality
+                }
+            
+                // Attach the click event listener to the "Print" button
+                document.getElementById("printButton").addEventListener("click", printPage);
+            </script>
+            
+
+</body>
+
+</html>
