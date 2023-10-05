@@ -162,20 +162,7 @@
     </style>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <script>
-
-        function update(id){
-            console.log(id);
-            console.log("user is updated");
-        }
-
-    </script>
-    <script>
-        document.getElementById("home-link").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent the default behavior of the link
-            location.reload(); // Reload the current page
-        });
-    </script>
+   
     
 </head>
 
@@ -388,7 +375,7 @@
         </div>
             <!-- this is kunal  -->
             
-            <table class="table">
+            <table class="table" id="data-table">
                 <thead>
                     <th>Check In</th>
                     <th>Name</th>
@@ -493,6 +480,46 @@ $(document).ready(function() {
                 normalizeFunction: 'polynomial'
             });
         })(jQuery);
+    </script>
+     <script>
+
+        function update(id){
+            console.log(id);
+            console.log("user is updated");
+        }
+
+   console.log('hello');
+        document.getElementById("home-link").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default behavior of the link
+            location.reload(); // Reload the current page
+        });
+
+            // this line will fetch data
+            fetch('http://localhost:8080/member/1')
+  .then(response => {
+    
+    return response.json(); // Convert the response to JSON
+  })
+  .then(data => {
+    // Now 'data' is a JavaScript object containing the JSON data
+    console.log(data);
+
+    const table = document.getElementById('data-table');
+    const tbody = table.querySelector('tbody');
+    data.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = 
+    `   <td>${item.checkIn}</td>
+        <td>${item.checkOut}</td>
+        <!-- Add more <td> elements for additional columns -->`;
+    tbody.appendChild(row);})
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+
+
+
     </script>
 
 </body>
