@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="../images/cvirms_logo.png">
+    <link rel="shortcut icon" href="images/cvirms_logo.png">
+    <title>Tenant Information Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        .highlighted-header {
+            background-color: #757575; /* Change to your preferred highlight color */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .guest-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .guest-container select,
+        .guest-container input {
+            flex: 1;
+        }
+   
+    
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea,
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        input[type="file"] {
+            margin-top: 5px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #g1,#g2,#g3,#g4,#g5{
+            display: none;
+        }
+       
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add this CSS to put Pronoun, First Name, Middle Name, and Last Name in the same line */
+        .name-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name-container input[type="text"] {
+            width: 30%; /* Adjust the width as needed */
+        }
+        .guestss{
+            width: 50%;
+        }
+    </style>
+    <script>
+        function showGuest(){
+            var value = document.getElementById('numOfGuests').value;
+            console.log(value);
+            var element = document.getElementById('guestsInput');
+            var childs = element.querySelectorAll('*');
+            for(var a = 0;a<value;a++){
+                    childs[a].style.display = 'block';
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+    <h1 class="text-center highlighted-header" style="background-color: #757575;" style="color: white;">Add Tenant</h1>
+    <form action="#" method="post" class="container">
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="title">Title:</label>
+                <select id="title" name="title" class="form-control">
+                    <option value="Mr.">Mr.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Miss">Miss</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="middleName">Middle Name:</label>
+                <input type="text" id="middleName" name="middleName" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="form-control">
+            </div>
+        </div>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+     
+        <label for="contactNo">Contact No:</label>
+        <input type="tel" id="contactNo" name="contactNo"><br>
+        
+        <label for="numOfGuests">Number of Guests:</label>
+    <select id="numOfGuests" name="numOfGuests" onchange="showGuestFields()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+    <div id="guestsInput"></div>
+
+    <script>
+        function showGuestFields() {
+            var numOfGuests = document.getElementById("numOfGuests").value;
+            var guestsInput = document.getElementById("guestsInput");
+            guestsInput.innerHTML = ""; // Clear previous fields
+
+            for (var i = 1; i <= numOfGuests; i++) {
+                var guestDiv = document.createElement("div");
+                guestDiv.className = "guest-container";
+
+                var nameLabel = document.createElement("label");
+                nameLabel.setAttribute("for", "name" + i);
+                
+
+                var nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.name = "name" + i;
+                nameInput.id = "name" + i;
+                nameInput.placeholder = "Name";
+
+                var genderLabel = document.createElement("label");
+                genderLabel.setAttribute("for", "gender" + i);
+                
+
+                var genderSelect = document.createElement("select");
+                genderSelect.name = "gender" + i;
+                genderSelect.id = "gender" + i;
+
+                var maleOption = document.createElement("option");
+                maleOption.value = "male";
+                maleOption.textContent = "Male";
+
+                var femaleOption = document.createElement("option");
+                femaleOption.value = "female";
+                femaleOption.textContent = "Female";
+
+                var otherOption = document.createElement("option");
+                otherOption.value = "other";
+                otherOption.textContent = "Other";
+
+                genderSelect.appendChild(maleOption);
+                genderSelect.appendChild(femaleOption);
+                genderSelect.appendChild(otherOption);
+
+                guestDiv.appendChild(nameLabel);
+                guestDiv.appendChild(nameInput);
+                guestDiv.appendChild(genderLabel);
+                guestDiv.appendChild(genderSelect);
+
+                guestsInput.appendChild(guestDiv);
+            }
+        }
+    </script>
+
+    
+    <div>
+     <label for="familyType">Select Family Type:</label>
+    <select id="familyType" onchange="handleFamilyTypeChange()">
+      <option value="family">Family</option>
+      <option value="student">Student</option>
+      <option value="employee">Employee</option>
+      <option value="selfEmployed">Self Employed</option>
+    </select><br>
+    
+    <div id="adultCountContainer" style="display: none;">
+      <label for="adultCount">Number of Adults:</label>
+      <select id="adultCount" onchange="generateNameFields('adult', this.value)">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
+    </div>
+    
+    <div id="adultNames"></div>
+    
+    <div id="childCountContainer" style="display: none;">
+      <label for="childCount">Number of Children:</label>
+      <select id="childCount" onchange="generateNameFields('child', this.value)">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
+    </div>
+    
+    <div id="childNames"></div>
+    
+    <div id="studentInfo" style="display: none;">
+      <label for="studentId">Student ID:</label>
+      <input type="text" id="studentId" name="studentId"><br>
+      
+      <label for="collegeName">College Name:</label>
+      <input type="text" id="collegeName" name="collegeName"><br>
+    </div>
+    
+    <div id="employeeInfo" style="display: none;">
+      <label for="employeeId">Employee ID:</label>
+      <input type="text" id="employeeId" name="employeeId"><br>
+      
+      <label for="companyName">Company Name:</label>
+      <input type="text" id="companyName" name="companyName"><br>
+    </div>
+  </form>
+
+  <script>
+    function handleFamilyTypeChange() {
+      const familyType = document.getElementById('familyType').value;
+      const adultCountContainer = document.getElementById('adultCountContainer');
+      const childCountContainer = document.getElementById('childCountContainer');
+      const studentInfo = document.getElementById('studentInfo');
+      const employeeInfo = document.getElementById('employeeInfo');
+      
+      if (familyType === 'family') {
+        adultCountContainer.style.display = 'block';
+        childCountContainer.style.display = 'block';
+        studentInfo.style.display = 'none';
+        employeeInfo.style.display = 'none';
+      } else if (familyType === 'student') {
+        adultCountContainer.style.display = 'none';
+        childCountContainer.style.display = 'none';
+        studentInfo.style.display = 'block';
+        employeeInfo.style.display = 'none';
+      } else if (familyType === 'employee') {
+        adultCountContainer.style.display = 'none';
+        childCountContainer.style.display = 'none';
+        studentInfo.style.display = 'none';
+        employeeInfo.style.display = 'block';
+      } else {
+        adultCountContainer.style.display = 'none';
+        childCountContainer.style.display = 'none';
+        studentInfo.style.display = 'none';
+        employeeInfo.style.display = 'none';
+      }
+      
+      document.getElementById('adultNames').innerHTML = '';
+      document.getElementById('childNames').innerHTML = '';
+    }
+
+    function generateNameFields(type, count) {
+        const container = document.getElementById(type + 'Names');
+        container.innerHTML = '';
+
+        for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.classList.add('guest-container');
+
+            const nameLabel = document.createElement('label');
+            nameLabel.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} ${i} Name: `;
+
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameInput.name = type + i;
+
+            // Create a gender dropdown
+            const genderLabel = document.createElement('label');
+           
+            const genderSelect = document.createElement('select');
+            genderSelect.name = 'gender' + i;
+            genderSelect.id = 'gender' + i;
+
+            const maleOption = document.createElement('option');
+            maleOption.value = 'male';
+            maleOption.textContent = 'Male';
+
+            const femaleOption = document.createElement('option');
+            femaleOption.value = 'female';
+            femaleOption.textContent = 'Female';
+
+            const otherOption = document.createElement('option');
+            otherOption.value = 'other';
+            otherOption.textContent = 'Other';
+
+            genderSelect.appendChild(maleOption);
+            genderSelect.appendChild(femaleOption);
+            genderSelect.appendChild(otherOption);
+
+            div.appendChild(nameLabel);
+            div.appendChild(nameInput);
+            div.appendChild(genderLabel);
+            div.appendChild(genderSelect);
+
+            container.appendChild(div);
+        }
+    }
+  </script>
+       
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br>
+        
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode"><br>
+        
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" id="vehicleNo" name="vehicleNo" class="form-check-input">
+                <label for="vehicleNo" class="form-check-label">Vehicle No:</label>
+            </div>
+            <div id="vehicleNoTextFieldContainer" style="display: none;">
+                <input type="text" id="vehicleNoTextField" name="vehicleNoTextField" class="form-control" placeholder="Enter Vehicle No">
+            </div>
+        </div>
+        
+        
+        <label for="photoId">Upload Photo ID:</label>
+        <input type="file" id="photoId" name="photoId"><br><br>
+
+        <label for="uploadPhoto">Upload Photo:</label>
+        <input type="file" id="uploadPhoto" name="uploadPhoto" accept="image/*"><br><br>
+        
+        <label for="scannedPhotoId">Scanned Photo ID:</label>
+        <select id="scannedPhotoId" name="scannedPhotoId">
+            <option value="passport">Passport</option>
+            <option value="driverLicense">Driver's License</option>
+            <option value="idCard">ID Card</option>
+            <option value="other">Other</option>
+        </select><br>
+        
+        <label for="documentId">Document ID:</label>
+        <input type="text" id="documentId" name="documentId"><br>
+
+       
+
+        
+        <div class="col-md-10">
+            <label for="startDate">Agreement Start Date:</label>
+            <input type="datetime-local" id="startDate" name="startDate" class="form-control">
+        </div>
+        
+        <div class="col-md-10">
+            <label for="checkoutDate" class="col-md-2 col-form-label">Checkout Date:</label>
+            <input type="datetime-local" id="checkoutDate" name="checkoutDate" class="form-control">
+            <span id="checkoutDateError" class="text-danger"></span>
+        </div>
+        
+        <script>
+            // JavaScript to perform date validation
+            const startDateInput = document.getElementById('startDate');
+            const checkoutDateInput = document.getElementById('checkoutDate');
+            const checkoutDateError = document.getElementById('checkoutDateError');
+        
+            checkoutDateInput.addEventListener('input', function () {
+                const startDateValue = new Date(startDateInput.value);
+                const checkoutDateValue = new Date(checkoutDateInput.value);
+        
+                if (startDateValue > checkoutDateValue) {
+                    checkoutDateError.textContent = 'Checkout Date cannot be earlier than Agreement Start Date.';
+                    checkoutDateInput.setCustomValidity('Invalid');
+                } else {
+                    checkoutDateError.textContent = '';
+                    checkoutDateInput.setCustomValidity('');
+                }
+            });
+        </script>
+        
+       
+        
+        
+        <label for="remark">Remark:</label>
+        <textarea id="remark" name="remark"></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript to toggle the visibility of the Vehicle No text field
+        const vehicleNoCheckbox = document.getElementById('vehicleNo');
+        const vehicleNoTextFieldContainer = document.getElementById('vehicleNoTextFieldContainer');
+
+        vehicleNoCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                vehicleNoTextFieldContainer.style.display = 'block';
+            } else {
+                vehicleNoTextFieldContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+

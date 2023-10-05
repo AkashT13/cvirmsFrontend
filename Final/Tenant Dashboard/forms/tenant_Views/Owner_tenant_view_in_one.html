@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      background-color: #F8F9FA;
+    }
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .form-section {
+      flex: 1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin: 10px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    }
+    .form-section:hover {
+      transform: translateY(-5px);
+    }
+    .form-section h2 {
+      margin-top: 0;
+      color: #333333;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-section table {
+      width: 100%;
+    }
+    .form-section td {
+      padding: 12px;
+      border-top: 1px solid #DDDDDD;
+    }
+    .form-section td:first-child {
+      font-weight: bold;
+      width: 30%;
+    }
+    .owner-form {
+      background-color: #F9F9F9;
+    }
+    .tenant-form {
+      background-color: #FEFEFE;
+    }
+    .form-section button {
+      margin-top: 20px;
+      background-color: #1B24CE;
+      color:#ccc;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: block;
+      margin: 0 auto;
+    }
+    .form-section button:hover {
+      background-color: #0056B3;
+      transform: scale(1.05);
+    }
+    .back1{
+      background-color: #555555;
+    }
+    .back2{
+      background-color: #555555;
+    }
+    .title1{
+      color: #fff;
+    }
+    .title2{
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container owner-form">
+    <!-- Owner Details Section -->
+    <div class=" form-section ">
+      <div class="back1">
+        <h2><strong  class="title1";>Owner Details View</strong> </h2>
+      </div>
+      <table class="table">
+        <tbody>
+            <tbody>
+                <tr>
+                  <td><strong>Owner Name:</strong></td>
+                  <td>Mahesh Nitin Shashtri</td>
+                </tr>
+                <tr>
+                  <td><strong>Manager Name:</strong></td>
+                  <td>Nitin Anuj Mishra</td>
+                </tr>
+                <tr>
+                  <td><strong>Owner Profile Photo:</strong></td>
+                      <td><img src="download.ipej" alt="photo"></td>
+                </tr>
+                <tr>
+                  <td><strong>Owner Contact Number</strong></td>
+                  <td>9876543456</td>
+                </tr>
+                <tr>
+                  <td><strong>Property Address</strong></td>
+                  <td>Pune</td>
+                </tr>
+                <tr>
+                    <td><strong>Pincode</strong></td>
+                    <td>442001</td>
+                  </tr>
+                <tr>
+                  <td><strong>Shop Act / License No.</strong></td>
+                  <td>******4552</td>
+                </tr>
+                <tr>
+                  <td><strong>Owner's Document Id Type</strong></td>
+                  <td>Aadhar Card</td>
+                </tr>
+                <tr>
+                  <td><strong>Document  Id Photo:</strong></td>
+                  <td>eswtrdgfdgh.jpg</td>
+                </tr>
+                <tr>
+                  <td><strong>Document ID Number</strong></td>
+                  <td>  *********5214</td>
+                </tr>
+                <tr>
+                  <td><strong>Contact Number</strong></td>
+                  <td>*******1254</td>
+                </tr>
+                <tr>
+                  <td><strong>Email</strong></td>
+                  <td>rrr@gmail.com</td>
+                </tr>
+                <!-- Remaining rows -->
+              </tbody>
+          <!-- Rows for owner details... -->
+        </tbody>
+      </table>
+    </div>
+    <!-- Tenant Details Section -->
+    <div class="form-section tenant-form">
+    <div class="back2">
+      <h2><strong class="title2"  ;>Tenant Details View</strong></h2>
+    </div>
+      <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td>Mahesh Nitin Shashtri</td>
+              </tr>
+              <tr>
+                <td><strong>Tenant Profile Photo:</strong></td>
+                <td><img src="download.ipej" alt="photo"></td>
+              </tr>
+              <tr>
+                <td><strong>Gender:</strong></td>
+                <td>
+                    Male
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Tenant Contact Number:</strong></td>
+                <td>987654152</td>
+              </tr>
+              <tr>
+                <td><strong>Address:</strong></td>
+                <td>Pune</textarea></td>
+              </tr>
+              <tr>
+                <td><strong>Staying As</strong></td>
+                <td>Family</td>
+              </tr>
+              <tr>
+                <td><strong>Guest </strong></td>
+                <td>1: vihani patil</td>
+              </tr>
+              <tr>
+                <td><strong>Guest Gender </strong></td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td><strong>Pincode:</strong></td>
+                <td>442001</td>
+              </tr>
+              <tr>
+                <td><strong>Document Id Type:</strong></td>
+                <td>
+                    Aadhar Card
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Document Id Number:</strong></td>
+                <td>******7896</td>
+              </tr>
+              <tr>
+                <td><strong>Document  Id Photo:</strong></td>
+                <td>ffgf.jpg</td>
+              </tr>
+              <tr>
+                <td><strong>Tenancy Start Date:</strong></td>
+                <td> 4/05/23 6:54</td>
+              </tr>
+              <tr>
+                <td><strong>Tenancy End Date:</strong></td>
+                <td>5/05/23 5:54</td>
+              </tr>
+              <tr>
+                <td><strong>Remark:</strong></td>
+                <td><input type="text"placeholder="Remark" required></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </td>
+              </tr>
+          <!-- Rows for tenant details... -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

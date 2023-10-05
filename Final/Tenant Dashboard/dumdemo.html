@@ -1,0 +1,604 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CVIRMS</title>
+    <meta name="description" content="CVIRMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="shortcut icon" href="images/cvirms_logo.png">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+                /* Style the dropdown menu */
+    .user-menu {
+    display: none; /* Hide the menu by default */
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+    /* Style the menu items */
+    .user-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+    /* Change the background color and text color on hover */
+    .user-menu a:hover {
+    background-color: #b4d0de;
+    color: #fff;
+}
+
+    /* Show the dropdown menu when the parent element is hovered */
+    .dropdown:hover .user-menu {
+    display: block;
+}
+
+
+    .card:hover {
+        transform: scale(1.00); /* Enlarge the card slightly on hover */
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    }
+
+        #main-menu a {
+        color: black !important;
+    }
+    
+        #language {
+    margin-top: 0; /* Remove top margin */
+    padding: 10px 0px; /* Adjust padding as needed */
+    }
+    #emergency{
+            background-color: #e0c8f7;
+        }
+        #notice{
+            background-color: #f7c8c6;
+        }
+        #Add{
+            background-color: #c1e2b3;
+
+        }
+        #support{
+            background-color: #e6f7ff;
+        }
+        .card{
+            border-radius: 20px;
+        }
+
+        .logo {
+    display: inline-flex;
+    align-items: center;
+    color: white; /* Set text color to white */
+   
+    padding: 5px 10px; /* Add padding for spacing */
+    border-radius: 5px; /* Add rounded corners */
+}
+
+.logo i {
+    margin-right: 5px; /* Add spacing between the icon and text */
+}
+
+
+
+/* Dropdown Menu Background */
+.dropdown-menu {
+    background-color: #f7f7f7;
+    border: 1px solid #dcdcdc; /* Dropdown Menu Border */
+    border-radius: 5px; /* Rounded corners for the dropdown menu */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+/* Dropdown Menu Items Text Color */
+.dropdown-item {
+    color: #333333;
+}
+
+/* Hover Color (Background) */
+.dropdown-item:hover {
+    background-color: #b4d0de;
+    color: #555555; /* Text color for hovered item */
+}
+
+/* Highlight Color (Active Item) */
+.dropdown-item.active {
+    background-color: #e0e0e0;
+}
+
+/* Remove underlines from links inside dropdown items */
+.dropdown-item a {
+    text-decoration: none;
+}
+
+/* Optional: Increase spacing between items for better readability */
+.dropdown-menu .dropdown-item {
+    padding: 10px 15px;
+}
+
+/* Optional: Style the dropdown toggle button */
+.navbar-toggler-icon {
+    color: #333333;
+}
+.green-button {
+    background-color: green !important;
+}
+body {
+      padding: 0px;
+      font-family: 'Arial', sans-serif;
+      background-color: #F8F9FA;
+    }
+   
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .form-section {
+      flex: 1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin: 10px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    }
+    .form-section:hover {
+      transform: translateY(-5px);
+    }
+    .form-section h2 {
+      margin-top: 0;
+      color: #333333;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-section table {
+      width: 100%;
+    }
+    .form-section td {
+      padding: 12px;
+      border-top: 1px solid #DDDDDD;
+    }
+    .form-section td:first-child {
+      font-weight: bold;
+      width: 30%;
+    }
+    .owner-form {
+      background-color: #F9F9F9;
+    }
+    .tenant-form {
+      background-color: #FEFEFE;
+    }
+    .form-section button {
+      margin-top: 20px;
+      background-color: #1B24CE;
+      color:#ccc;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: block;
+      margin: 0 auto;
+    }
+    .form-section button:hover {
+      background-color: #0056B3;
+      transform: scale(1.05);
+    }
+    .back1{
+      background-color: #555555;
+    }
+    .back2{
+      background-color: #555555;
+    }
+    .title1{
+      color: #fff;
+    }
+    .title2{
+      color: #fff;
+    }
+
+    </style>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script>
+
+        function update(id){
+            console.log(id);
+            console.log("user is updated");
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel" style="background-color: #bab6b6;">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars" ></i>
+                </button>
+                <a class="navbar-brand" href="index.html" style="background-color: #bab6b6;">
+                    <img src="images/cvirms_logo.png" alt="Logo" width="130px">
+                </a>   
+                
+            </div>
+        
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav" style="background-color:#bab6b6;">
+                    <li class="active">
+                        <a href="Employee.html">
+                            <i class="menu-icon fa fa-user-plus"  aria-hidden="true" aria-hidden="true" style="color: black;"></i> <!-- User icon -->
+                            Add Employee
+                        </a>
+                    </li>    
+                    
+                    
+                    <li class="active">
+                        <a href="foreignVisitorForm.html">
+                            <i class="menu-icon fa fa-user-secret"  aria-hidden="true" aria-hidden="true" style="color: black;"></i><!-- User icon -->
+                             Foreign Visitor
+                        </a>
+                    </li>
+
+                   
+                    
+                    <li class="nav-item dropdown active"> <!-- Use the 'nav-item dropdown' class -->
+                        <a class="nav-link dropdown-toggle ml-auto" href="#" id="language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">
+                            <i class="menu-icon fa fa-language black-menu-icon" aria-hidden="true" aria-hidden="true" style="color: black;"></i> Language
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <a class="dropdown-item" href="#" >Hindi</a>
+                            <a class="dropdown-item" href="#" >English</a>
+                            <a class="dropdown-item" href="#" >Marathi</a>
+                            <a class="dropdown-item" href="#" >Kannada</a>
+                            <a class="dropdown-item" href="#" >Telugu</a>
+                            <a class="dropdown-item" href="#" >Malayalam</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </aside><!-- /#left-panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header" style="background-color:#bab6b6;">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline" style="background-color: #bab6b6;  ">
+                          <form class="search-form"  style="background-color: #bab6b6;  ">
+                              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search" style="background-color: #bab6b6; color: black; font-weight: bold;">
+                              <button class="search-close" type="submit"><i class="fa fa-close" style="color: black;"></i></button>
+                          </form>
+                      </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div id="language-select">  
+                        <a id="profile" aria-haspopup="true" aria-expanded="true">
+                            <p style="color: black;">Profile</p>
+                        </a>
+                    </div>
+
+                 </div>
+
+                </header><!-- /header -->
+
+
+             <div id="printMe" class="printMe">  
+              
+              <!-- Print Details Section -->
+              
+                <div class="form-container owner-form" >
+                    <!-- Owner Details Section -->
+                    
+                    <div class=" form-section ">
+                      <div class="back1">
+                        <h2><strong  class="title1";>Owner Details View</strong> </h2>
+                      </div>
+                      <table class="table">
+                        <tbody>
+                            <tbody>
+                                <tr>
+                                  <td><strong>Owner Name:</strong></td>
+                                  <td>Mahesh Nitin Shashtri</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Manager Name:</strong></td>
+                                  <td>Nitin Anuj Mishra</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Owner Profile Photo:</strong></td>
+                                  <td>
+                                    <a href="#"   aria-haspopup="true" aria-expanded="false">
+                                      <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar" width="50px">
+                                  </a>
+                                </td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Owner Contact Number</strong></td>
+                                  <td>9876543456</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Property Address</strong></td>
+                                  <td>Pune</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pincode</strong></td>
+                                    <td>442001</td>
+                                  </tr>
+                                <tr>
+                                  <td><strong>Shop Act / License No.</strong></td>
+                                  <td>******4552</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Owner's Document Id Type</strong></td>
+                                  <td>Aadhar Card</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Document  Id Photo:</strong></td>
+                                  <td>eswtrdgfdgh.jpg</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Document ID Number</strong></td>
+                                  <td>  *********5214</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td><strong>Email</strong></td>
+                                  <td>rrr@gmail.com</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Police Station</strong></td>
+                                  <td>Akurdi Police Station</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>SDPO Division</strong></td>
+                                  <td>Division</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Ad SP/DCP</strong></td>
+                                  <td>sp/dcp</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>SP/CP</strong></td>
+                                  <td>sp/cp</td>
+                                </tr>
+                                <!-- Remaining rows -->
+                              </tbody>
+                          <!-- Rows for owner details... -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Tenant Details Section -->
+                    <div class="form-section tenant-form">
+                    <div class="back2">
+                      <h2><strong class="title2"  ;>Tenant Details View</strong></h2>
+                    </div>
+                      <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Name:</strong></td>
+                                <td>Mahesh Nitin Shashtri</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Tenant Profile Photo:</strong></td>
+                                <td>
+                                  <a href="#"   aria-haspopup="true" aria-expanded="false">
+                                    <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar" width="50px">
+                                </a>
+                              </td>
+                              </tr>
+                              <tr>
+                                <td><strong>Gender:</strong></td>
+                                <td>
+                                    Male
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><strong>Tenant Contact Number:</strong></td>
+                                <td>987654152</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Tenant Address:</strong></td>
+                                <td>Pune</textarea></td>
+                              </tr>
+                              <tr>
+                                <td><strong>Staying As</strong></td>
+                                <td>Family</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Guest </strong></td>
+                                <td>1: vihani patil</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Guest Gender </strong></td>
+                                <td>Female</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Pincode:</strong></td>
+                                <td>442001</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Document Id Type:</strong></td>
+                                <td>
+                                    Aadhar Card
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><strong>Document Id Number:</strong></td>
+                                <td>******7896</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Document  Id Photo:</strong></td>
+                                <td>ffgf.jpg</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Tenancy CheckIn:</strong></td>
+                                <td> 4/05/23 6:54</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Tenancy CheckOut:</strong></td>
+                                <td>5/05/23 5:54</td>
+                              </tr>
+                              <tr>
+                                <td><strong>Remark:</strong></td>
+                                <td><input type="text"placeholder="Remark" required></textarea></td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" align="center" >
+                                  <button type="submit" class="btn btn-primary">Update</button>
+                                </td>
+                              </tr>
+                          <!-- Rows for tenant details... -->
+                        </tbody>
+                      </table>
+                      
+                    </div>
+                    
+                  </div>
+
+                  <span style="margin-left: 600px;"  >
+                    <button type="submit" class="btn btn-primary" id="printButton" onclick="printForm()"> Print </button>
+                  </span>
+
+                  <script>
+                   function printForm() {
+  // Get the contents of the `printMe` div element.
+  var printContents = document.getElementById("printMe").innerHTML;
+
+  // Print the contents of the `printMe` div element.
+  window.print(printContents);
+}
+                  </script>
+
+                  </div>
+              
+            
+            
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Check out button green colour-->
+    <script>
+        function changeColor(button) {
+            // Check the current text of the button
+            if (button.textContent === "Check Out") {
+                // Change the background color to green
+                button.style.backgroundColor = "green";
+                // Change the button text to "Check In"
+                button.textContent = "Check In";
+            } else {
+                // Change the background color back to the default
+                button.style.backgroundColor = "";
+                // Change the button text back to "Check Out"
+                button.textContent = "Check Out";
+            }
+        }
+    </script>
+    
+    <!-- Right Panel -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/widgets.js"></script>
+    <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+   
+        
+
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foreign Visitor</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Include Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    
+   .l1{
+    font-weight: bolder;
+   }
+   
+   .main {
+        width: 50%;
+        font-weight: bolder;
+    }
+
+    form {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .h1{
+          max-width: 100%;
+          padding: 10px;
+          background-color: #007bff;
+          color: #f9f9f9;
+        }
+  </style>
+</head>
+<body>
+  <h1 align="center" class="h1">Foreign Visitor</h1>
+  <div class="container mt-5">
+    <form>
+          <div class="form-row">
+              <div class="col-md-2 form-group">
+                  <label class="l1">Title:</label>
+                  <select name="title" class="form-control">
+                      <option value="Mr.">Mr.</option>
+                      <option value="Mrs.">Mrs.</option>
+                      <option value="Miss">Miss</option>
+                  </select>
+              </div>
+              <div class="col-md-3 form-group">
+                  <label class="l1">First Name:</label>
+                  <input type="text" class="form-control" placeholder="First Name">
+              </div>
+              <div class="col-md-3 form-group">
+                  <label class="l1">Middle Name:</label>
+                  <input type="text" class="form-control" placeholder="Middle Name">
+              </div>
+              <div class="col-md-4 form-group">
+                  <label class="l1">Last Name:</label>
+                  <input type="text" class="form-control" placeholder="Last Name">
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="l1" for="document">Photo:</label>
+            <input type="file" class="form-control-file" id="document" name="document">
+          </div>
+      <!-- Gender Dropdown -->
+      <div class="main">
+      <div class="form-group">
+        <label for="gender">Gender :</label>
+        <select class="form-control" id="gender" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <!-- Contact Details -->
+      <div class="form-group">
+        <label for="contact">Contact Details :</label>
+        <input type="tel" class="form-control" id="contact" name="contact">
+      </div>
+      <!-- Email Address -->
+      <div class="form-group">
+        <label for="email">Email Address :</label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
+      <!-- Country -->
+      <div class="form-group">
+        <label for="country">Country Of Origin:</label>
+        <select class="form-control" id="country" name="country">
+            <!-- Options will be dynamically populated here -->
+        </select>
+    </div>
+    
+    <script>
+        const countryDropdown = document.getElementById("country");
+    
+        // Fetch the list of countries from the REST Countries API
+        fetch("https://restcountries.com/v3.1/all")
+            .then(response => response.json())
+            .then(data => {
+                const countries = data.map(country => country.name.common);
+                countries.sort(); // Sort the country names alphabetically
+    
+                countries.forEach(country => {
+                    const option = document.createElement("option");
+                    option.value = country;
+                    option.textContent = country;
+                    countryDropdown.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    </script>
+    
+      <!-- Document ID File Input -->
+      <div class="form-group">
+        <label for="document">Passport Photo:</label>
+        <input type="file" class="form-control-file" id="document" name="document">
+      </div>
+      <!-- Passport/Visa Type -->
+      <div class="form-group">
+        <label for="passportType">Passport Type:</label>
+        <select class="form-control" id="passportType" name="passportType">
+            <option value="Passport">Passport</option>
+            <option value="Tourist Visa">Blue Passport</option>
+            <option value="Business Visa">White Passport</option>
+            <option value="Student Visa">Maroon Passport</option>
+            <option value="Work Visa">Orange Passport</option>
+        </select>
+    </div>
+    
+      <!-- Passport Number -->
+      <div class="form-group">
+        <label for="passportNumber">Passport Number:</label>
+        <input type="text" class="form-control" id="passportNumber" name="passportNumber">
+      </div>
+      <!-- Country of Issuance -->
+      <div class="form-group">
+        <label for="issuanceCountry">Passport Issuance Country:</label>
+        <select class="form-control" id="issuanceCountry" name="issuanceCountry">
+        </select>
+    </div>
+    <div class="form-group">
+      <label for="visatype">Visa Type:</label>
+      <select class="form-control" id="passportType" name="visa">
+          <option value="Visa">Visa</option>
+          <option value="Tourist Visa">Tourist Visa</option>
+          <option value="Business Visa">Business Visa</option>
+          <option value="Student Visa">Student Visa</option>
+          <option value="Work Visa">Work Visa</option>
+      </select>
+  </div>
+    <!-- Visa Number -->
+    <div class="form-group">
+      <label for="visaNumber">Visa Number :</label>
+      <input type="text" class="form-control" id="visaNumber" name="visaNumber">
+    </div>
+    
+    <script>
+        // Fetch the list of countries from the REST Countries API
+        fetch("https://restcountries.com/v3.1/all")
+            .then((response) => response.json())
+            .then((data) => {
+                const issuanceCountrySelect = document.getElementById("issuanceCountry");
+    
+                // Sort the list of countries alphabetically by name
+                const sortedCountries = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+    
+                // Populate the dropdown with country names
+                sortedCountries.forEach((country) => {
+                    const option = document.createElement("option");
+                    option.value = country.name.common;
+                    option.textContent = country.name.common;
+                    issuanceCountrySelect.appendChild(option);
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    </script>
+     <div class="form-group">
+      <label for="issuanceDate">Issuance Date of Visa :</label>
+      <input type="date" class="form-control" id="startdate" name="startDate">
+    </div>
+    
+    <!-- Expiry Date of visa -->
+    <div class="form-group">
+      <label for="expiry">Expiry Date of Visa :</label>
+      <input type="date" class="form-control" id="expiry1" name="expiry1">
+    </div>
+    
+    
+<script>
+  // Get references to the input elements
+  const issuanceDateInput = document.getElementById("issuanceDate");
+  const expiryDateInput = document.getElementById("expiryDate");
+
+  // Event listener to ensure expiry date is not less than issuance date
+  expiryDateInput.addEventListener("input", function () {
+      const issuanceDate = new Date(issuanceDateInput.value);
+      const expiryDate = new Date(expiryDateInput.value);
+
+      if (expiryDate < issuanceDate) {
+          alert("Expiry Date cannot be less than Issuance Date.");
+          expiryDateInput.value = issuanceDateInput.value;
+      }
+  });
+</script>
+<div class="form-group">
+  <label for="document">Visa Photo:</label>
+  <input type="file" class="form-control-file" id="document" name="document">
+</div>
+<div class="form-group">
+  <label for="Purposeofstay">Purpose of Stay:</label>
+  <select class="form-control" id="Purposeofstay" name="PurposeOfStay">
+      <option value="Purpose">Purpose of Stay</option>
+      <option value="Tourist Visa">Tourist</option>
+      <option value="Business Visa">Business </option>
+      <option value="Student Visa">Education</option>
+      <option value="Work Visa">Other</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="visatype">Mode of Stay:</label>
+  <select class="form-control" id="modeofstay" name="modeofstay">
+      <option value="mode">Mode of Stay</option>
+      <option value="Tourist Visa">Hotel</option>
+      <option value="Business Visa">Hostel</option>
+      <option value="Student Visa">PG</option>
+      <option value="Student Visa">Chawl</option>
+      <option value="Work Visa">Other</option>
+  </select>
+</div>
+
+      
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  
+</body>
+</html>
